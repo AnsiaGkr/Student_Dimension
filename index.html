@@ -4,136 +4,311 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Student Dimension</title>
+
   <style>
+    :root {
+      --red: #d83a32;
+      --dark: #333333;
+      --cream: #f7f3ec;
+      --white: #ffffff;
+      --soft-red: #fff0ee;
+      --shadow: 0 12px 35px rgba(0,0,0,0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f6f2ea;
-      color: #222;
+      background: var(--cream);
+      color: var(--dark);
     }
+
     header {
+      background: var(--white);
+      padding: 35px 20px;
       text-align: center;
-      padding: 45px 20px 25px;
+      border-bottom: 4px solid var(--red);
     }
-    header h1 {
-      font-size: 42px;
+
+    .logo {
+      width: 130px;
+      height: auto;
+      margin-bottom: 12px;
+    }
+
+    h1 {
       margin: 0;
-      color: #6f7f4f;
+      font-size: 42px;
+      color: var(--dark);
+      letter-spacing: 1px;
     }
-    header p {
+
+    h1 span {
+      color: var(--red);
+    }
+
+    .subtitle {
+      max-width: 720px;
+      margin: 14px auto 0;
       font-size: 18px;
-      max-width: 650px;
-      margin: 15px auto;
+      line-height: 1.5;
     }
-    .section {
-      max-width: 1100px;
-      margin: auto;
-      padding: 25px 20px;
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 22px 15px;
+      background: var(--dark);
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: white;
-      border-radius: 22px;
-      padding: 22px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
-    .card h3 {
-      margin-top: 0;
-      color: #6f7f4f;
-    }
-    .button {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 12px 16px;
-      border-radius: 999px;
-      background: #6f7f4f;
+
+    .nav a {
       color: white;
       text-decoration: none;
+      background: rgba(255,255,255,0.12);
+      padding: 10px 16px;
+      border-radius: 999px;
       font-weight: bold;
+      font-size: 14px;
     }
-    .note {
+
+    .section {
+      max-width: 1150px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-title h2 {
+      font-size: 32px;
+      margin: 0;
+      color: var(--dark);
+    }
+
+    .section-title p {
+      font-size: 17px;
+      color: #555;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      position: relative;
+      border-top: 5px solid var(--red);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--soft-red);
+      color: var(--red);
+      font-size: 12px;
+      font-weight: bold;
+      padding: 7px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .number {
+      font-size: 34px;
+      font-weight: bold;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: var(--dark);
+    }
+
+    .card p {
+      font-size: 15px;
+      line-height: 1.45;
+      color: #444;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--red);
+      margin: 16px 0;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--red);
+      color: white;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .coming {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .mini-card {
+      background: white;
+      padding: 24px;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      border-left: 5px solid var(--red);
+    }
+
+    .mini-card h3 {
+      margin-top: 0;
+      color: var(--red);
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 20px;
       font-size: 13px;
       color: #666;
-      text-align: center;
-      margin: 35px auto;
-      max-width: 800px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+      }
+
+      .section-title h2 {
+        font-size: 26px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <header>
-    <h1>Student Dimension</h1>
-    <p>Έξυπνα finds, εργαλεία και προτάσεις για φοιτητές, εξεταστική, διάβασμα και φοιτητικό σπίτι.</p>
+    <img src="logo.jpg" alt="Student Dimension Logo" class="logo" />
+    <h1>Student <span>Dimension</span></h1>
+    <p class="subtitle">
+      Έξυπνα finds, εργαλεία και προτάσεις για φοιτητές, εξεταστική, διάβασμα και φοιτητικό σπίτι.
+    </p>
   </header>
 
-  <section class="section">
-    <h2>📚 Exam Season Finds</h2>
-    <p>5 πράγματα που με έσωσαν στην εξεταστική.</p>
+  <nav class="nav">
+    <a href="#exam">📚 Εξεταστική</a>
+    <a href="#home">🏠 Φοιτητικό σπίτι</a>
+    <a href="#setup">💻 Study setup</a>
+    <a href="#tools">🤖 AI tools</a>
+  </nav>
 
-    <div class="grid">
+  <section class="section" id="exam">
+    <div class="section-title">
+      <h2>📚 5 πράγματα που με έσωσαν στην εξεταστική</h2>
+      <p>Μικρές αγορές που κάνουν τη φοιτητική καθημερινότητα πιο εύκολη.</p>
+    </div>
+
+    <div class="products">
+
       <div class="card">
+        <span class="badge">🔥 Bestseller</span>
+        <div class="number">01</div>
         <h3>☕ Θερμός Estia 300ml</h3>
         <p>Για καφέ που μένει ζεστός όλη μέρα.</p>
-        <p><strong>16,50€</strong></p>
-        <a class="button" href="#" target="_blank">Δες το προϊόν</a>
+        <div class="price">16,50€</div>
+        <a class="button" href="https://go.linkwi.se/z/10814-1/CD28404/?lnkurl=https%3A%2F%2Fwww.spitishop.gr%2F%25CF%2580%25CE%25BF%25CF%2584%25CE%25AE%25CF%2581%25CE%25B9-%25CE%25B8%25CE%25B5%25CF%2581%25CE%25BC%25CF%258C%25CF%2582-300ml-estia-save-the-aegean-denim-blue-01-16838-248350.html" target="_blank">Δες το προϊόν</a>
       </div>
 
       <div class="card">
+        <span class="badge">💰 Best Value</span>
+        <div class="number">02</div>
         <h3>🍱 Ισοθερμική Τσάντα Φαγητού</h3>
         <p>Για σπιτικό φαγητό, οικονομία και καλύτερη ενέργεια.</p>
-        <p><strong>20,90€</strong></p>
-        <a class="button" href="#" target="_blank">Δες το προϊόν</a>
+        <div class="price">20,90€</div>
+        <a class="button" href="https://go.linkwi.se/z/10814-1/CD28404/?lnkurl=https%3A%2F%2Fwww.spitishop.gr%2F%25CE%25B9%25CF%2583%25CE%25BF%25CE%25B8%25CE%25B5%25CF%2581%25CE%25BC%25CE%25B9%25CE%25BA%25CE%25AE-%25CF%2584%25CF%2583%25CE%25AC%25CE%25BD%25CF%2584%25CE%25B1-%25CF%2586%25CE%25B1%25CE%25B3%25CE%25B7%25CF%2584%25CE%25BF%25CF%258D-5lit-the-lunch-bags-original-olive-81020-212530.html" target="_blank">Δες το προϊόν</a>
       </div>
 
       <div class="card">
+        <span class="badge">⭐ Editor's Pick</span>
+        <div class="number">03</div>
         <h3>💡 Πορτατίφ Timeo Khaki</h3>
         <p>Καλός φωτισμός = καλύτερη συγκέντρωση.</p>
-        <p><strong>9,36€</strong></p>
-        <a class="button" href="#" target="_blank">Δες το προϊόν</a>
+        <div class="price">9,36€</div>
+        <a class="button" href="https://go.linkwi.se/z/10814-1/CD28404/?lnkurl=https%3A%2F%2Fwww.spitishop.gr%2F%25CF%2580%25CE%25BF%25CF%2581%25CF%2584%25CE%25B1%25CF%2584%25CE%25AF%25CF%2586-a-s-timeo-khaki-striped-116289p-229888.html" target="_blank">Δες το προϊόν</a>
       </div>
 
       <div class="card">
+        <span class="badge">🎓 Student Essential</span>
+        <div class="number">04</div>
         <h3>🪑 Καρέκλα Γραφείου Loft</h3>
         <p>Για πολύωρο διάβασμα χωρίς να διαλύεται η μέση σου.</p>
-        <p><strong>39,99€</strong></p>
-        <a class="button" href="#" target="_blank">Δες το προϊόν</a>
+        <div class="price">39,99€</div>
+        <a class="button" href="https://go.linkwi.se/z/10814-1/CD28404/?lnkurl=https%3A%2F%2Fwww.spitishop.gr%2F%25CE%25BA%25CE%25B1%25CF%2581%25CE%25AD%25CE%25BA%25CE%25BB%25CE%25B1-%25CE%25B3%25CF%2581%25CE%25B1%25CF%2586%25CE%25B5%25CE%25AF%25CE%25BF%25CF%2585-60x61x118-spitishop-loft-black-341314.html" target="_blank">Δες το προϊόν</a>
       </div>
 
       <div class="card">
+        <span class="badge">⏰ Focus Pick</span>
+        <div class="number">05</div>
         <h3>⏰ Ρολόι με Ξυπνητήρι</h3>
         <p>Οργάνωση χρόνου και λιγότερο άγχος.</p>
-        <p><strong>12,99€</strong></p>
-        <a class="button" href="#" target="_blank">Δες το προϊόν</a>
+        <div class="price">12,99€</div>
+        <a class="button" href="https://go.linkwi.se/z/10814-1/CD28404/?lnkurl=https%3A%2F%2Fwww.spitishop.gr%2F%25CF%2581%25CE%25BF%25CE%25BB%25CF%258C%25CE%25B9-%25CE%25B5%25CF%2580%25CE%25B9%25CF%2584%25CF%2581%25CE%25B1%25CF%2580%25CE%25AD%25CE%25B6%25CE%25B9%25CE%25BF-20x6x95-%25CE%25BE%25CF%2585%25CF%2580%25CE%25BD%25CE%25B7%25CF%2584%25CE%25AE%25CF%2581%25CE%25B9-a-s-edouard-210415-328447.html" target="_blank">Δες το προϊόν</a>
       </div>
+
     </div>
   </section>
 
   <section class="section">
-    <h2>🏠 Coming soon</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Φοιτητικό σπίτι</h3>
+    <div class="section-title">
+      <h2>Έρχονται σύντομα</h2>
+    </div>
+
+    <div class="coming">
+      <div class="mini-card" id="home">
+        <h3>🏠 Φοιτητικό σπίτι</h3>
         <p>Starter packs για δωμάτιο, κουζίνα και study corner.</p>
       </div>
-      <div class="card">
-        <h3>Study Setup</h3>
+
+      <div class="mini-card" id="setup">
+        <h3>💻 Study Setup</h3>
         <p>Γραφείο, καρέκλα, φωτισμός και gadgets.</p>
       </div>
-      <div class="card">
-        <h3>AI & εργαλεία</h3>
+
+      <div class="mini-card" id="tools">
+        <h3>🤖 AI & εργαλεία</h3>
         <p>Ψηφιακά εργαλεία για εργασίες, διάβασμα και οργάνωση.</p>
       </div>
     </div>
   </section>
 
-  <p class="note">
+  <footer>
     Η σελίδα περιέχει affiliate links. Αν αγοράσεις μέσα από αυτά, ενδέχεται να λάβω μικρή προμήθεια, χωρίς επιπλέον κόστος για εσένα.
-  </p>
+  </footer>
 
 </body>
 </html>
